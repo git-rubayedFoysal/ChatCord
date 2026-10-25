@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatCord</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="chat-shell">
+        <header class="chat-topbar">
+            <div class="topbar-brand">
+                <span class="brand-dot"></span>
+                <h1>ChatCord</h1>
+            </div>
+            <div class="topbar-room">
+                <span>Room</span>
+                <strong id="room-name">JavaScript</strong>
+            </div>
+            <a href="/" class="btn-leave" id="leave-room">
+                Leave Room
+            </a>
+        </header>
+
+        <div class="chat-body">
+            <aside class="chat-sidebar-new">
+                <section class="sidebar-block">
+                    <h3>Users</h3>
+                    <ul id="users" class="user-list"></ul>
+                </section>
+            </aside>
+
+            <main class="chat-stream-wrap">
+                <div class="chat-messages-new" id="chat-messages"></div>
+
+                <footer class="composer">
+                    <form id="chat-form" autocomplete="off">
+                        <input id="msg" type="text" placeholder="Message…" required />
+                        <button type="submit" class="btn-send">Send</button>
+                    </form>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

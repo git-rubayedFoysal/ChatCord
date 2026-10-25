@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatCord — Join a Room</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="join-shell">
+        <main class="join-card">
+            <header class="join-head">
+                <span class="brand-dot"></span>
+                <h1>ChatCord</h1>
+                <p class="join-tagline">Pick a name, pick a room — see you inside.</p>
+            </header>
+
+            <form id="join-form" autocomplete="off">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Enter username…" required />
+                </div>
+
+                <div class="field">
+                    <label for="room">Room</label>
+                    <select name="room" id="room">
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="PHP">PHP</option>
+                        <option value="C#">C#</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Java">Java</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-join">Join Chat</button>
+            </form>
+        </main>
+
+        <footer class="join-foot">Realtime chat • powered by Socket.IO</footer>
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>
