@@ -1,31 +1,34 @@
 <!DOCTYPE html>
+<!-- The main chat view: message stream + user sidebar + composer -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <!-- Responsive viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatCord</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Shared stylesheet -->
+    <script src="socket.io/socket.io.js"></script> <!-- Socket.IO client -->
 </head>
 
 <body>
     <div class="chat-shell">
+        <!-- Top bar: branding, current room, leave button -->
         <header class="chat-topbar">
             <div class="topbar-brand">
-                <span class="brand-dot"></span>
-                <h1>ChatCord</h1>
+                <span class="brand-dot"></span>           <!-- Decorative dot -->
+                <h1>ChatCord</h1>                       <!-- App title -->
             </div>
             <div class="topbar-room">
-                <span>Room</span>
-                <strong id="room-name">JavaScript</strong>
+                <span>Room</span>                       <!-- "Room" label -->
+                <strong id="room-name">JavaScript</strong><!-- Current room, shown here
+                                                            for context (overridden by JS on connect)</span></span></span></span>
+                <a href="/" class="btn-leave" id="leave-room">Leave Room</a>
             </div>
-            <a href="/" class="btn-leave" id="leave-room">
-                Leave Room
-            </a>
         </header>
 
         <div class="chat-body">
+            <!-- Sidebar: shows online users for the active room -->
             <aside class="chat-sidebar-new">
                 <section class="sidebar-block">
                     <h3>Users</h3>
@@ -33,20 +36,21 @@
                 </section>
             </aside>
 
+            <!-- Main area: message history + input box at bottom -->
             <main class="chat-stream-wrap">
                 <div class="chat-messages-new" id="chat-messages"></div>
 
                 <footer class="composer">
                     <form id="chat-form" autocomplete="off">
-                        <input id="msg" type="text" placeholder="Message…" required />
-                        <button type="submit" class="btn-send">Send</button>
+                        <input id="msg" type="text" placeholder="Message…" required /> <!-- Input field -->
+                        <button type="submit" class="btn-send">Send</button>           <!-- Send button -->
                     </form>
                 </footer>
             </main>
         </div>
     </div>
 
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./script.js"></script> <!-- Shared client logic -->
 </body>
 
 </html>

@@ -1,535 +1,137 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-
-:root {
-  --dark-color-a: #667aff;
-  --dark-color-b: #7386ff;
-  --light-color: #e6e9ff;
-  --success-color: #5cb85c;
-  --error-color: #d9534f;
+/* ============ Base reset & typography ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --accent: #38bdf8;
+  --text: #e2e8f0;
+  font-family: system-ui, sans-serif;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  background: var(--light-color);
-  margin: 20px;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-.btn {
-  cursor: pointer;
-  padding: 5px 15px;
-  background: var(--light-color);
-  color: var(--dark-color-a);
-  border: 0;
-  font-size: 17px;
-}
-
-/* Chat Page */
-
-.chat-container {
-  max-width: 1100px;
-  background: #fff;
-  margin: 30px auto;
-  overflow: hidden;
-}
-
-.chat-header {
-  background: var(--dark-color-a);
-  color: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.chat-main {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-}
-
-.chat-sidebar {
-  background: var(--dark-color-b);
-  color: #fff;
-  padding: 20px 20px 60px;
-  overflow-y: scroll;
-}
-
-.chat-sidebar h2 {
-  font-size: 20px;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.chat-sidebar h3 {
-  margin-bottom: 15px;
-}
-
-.chat-sidebar ul li {
-  padding: 10px 0;
-}
-
-.chat-messages {
-  padding: 30px;
-  max-height: 500px;
-  overflow-y: scroll;
-}
-
-.chat-messages .message {
-  padding: 10px;
-  margin-bottom: 15px;
-  background-color: var(--light-color);
-  border-radius: 5px;
-}
-
-.chat-messages .message .meta {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--dark-color-b);
-  opacity: 0.7;
-  margin-bottom: 7px;
-}
-
-.chat-messages .message .meta span {
-  color: #777;
-}
-
-.chat-form-container {
-  padding: 20px 30px;
-  background-color: var(--dark-color-a);
-}
-
-.chat-form-container form {
-  display: flex;
-}
-
-.chat-form-container input[type="text"] {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  flex: 1;
-}
-
-/* Join Page */
-.join-container {
-  max-width: 500px;
-  margin: 80px auto;
-  color: #fff;
-}
-
-.join-header {
-  text-align: center;
-  padding: 20px;
-  background: var(--dark-color-a);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.join-main {
-  padding: 30px 40px;
-  background: var(--dark-color-b);
-}
-
-.join-main p {
-  margin-bottom: 20px;
-}
-
-.join-main .form-control {
-  margin-bottom: 20px;
-}
-
-.join-main label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.join-main input[type="text"] {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main select {
-  font-size: 16px;
-  padding: 5px;
-  height: 40px;
-  width: 100%;
-}
-
-.join-main .btn {
-  margin-top: 20px;
-  width: 100%;
-}
-
-#users {
-  max-height: 150px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-@media (max-width: 700px) {
-  .chat-main {
-    display: block;
-  }
-
-  .chat-sidebar {
-    display: none;
-  }
-}
-
-/* ===== Chat Page — dark redesign (chat.html) ===== */
-
-body:has(.chat-shell) {
   margin: 0;
-  background: #1e1f22;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
 }
 
-.chat-shell {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  max-width: 1100px;
-  margin: 0 auto;
-  background: #36393f;
-  color: #dcddde;
-}
-
-.chat-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.7rem 1.2rem;
-  background: #2f3136;
-  border-bottom: 1px solid #202225;
-}
-
-.topbar-brand {
-  display: flex;
-  align-items: center;
-}
-
-.brand-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #5865f2;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.chat-topbar h1 {
-  font-size: 1.05rem;
-  color: #ffffff;
-}
-
-.topbar-room {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #72767d;
-  font-size: 0.85rem;
-}
-
-.topbar-room strong {
-  color: #ffffff;
-  background: #202225;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-.btn-leave {
-  text-decoration: none;
-  color: #ed4245;
-  background: transparent;
-  border: 1px solid #ed4245;
-  padding: 0.45rem 1rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  transition: background 0.15s, color 0.15s;
-}
-
-.btn-leave:hover {
-  background: #ed4245;
-  color: #ffffff;
-}
-
-.chat-body {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-}
-
-.chat-sidebar-new {
-  width: 220px;
-  flex-shrink: 0;
-  padding: 1rem;
-  background: #2f3136;
-  border-right: 1px solid #202225;
-  overflow-y: auto;
-}
-
-.sidebar-block h3 {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #72767d;
-  margin: 0.2rem 0 0.6rem;
-}
-
-.user-list {
-  padding: 0;
-  margin: 0;
-}
-
-.user-list li {
-  padding: 0.35rem 0;
-  color: #b9bbbe;
-}
-
-.user-list li::before {
-  content: "●";
-  color: #3ba55d;
-  font-size: 0.7rem;
-  margin-right: 0.5rem;
-  vertical-align: middle;
-}
-
-.chat-stream-wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
-}
-
-.chat-messages-new {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem 1.2rem;
-}
-
-/* JS-generated markup (.message / .meta / .text), restyled for dark theme */
-.chat-messages-new .message {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  background: #40444b;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  margin: 0.5rem 0;
-}
-
-.chat-messages-new .message .meta {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #b9bbbe;
-  margin-bottom: 0.2rem;
-}
-
-.chat-messages-new .message .meta span {
-  color: #72767d;
-  font-weight: 400;
-  margin-left: 0.5rem;
-}
-
-.chat-messages-new .message .text {
-  margin: 0;
-  color: #dcddde;
-  word-break: break-word;
-  white-space: pre-wrap;
-}
-
-.composer {
-  padding: 0.8rem 1.2rem;
-  background: #36393f;
-  border-top: 1px solid #202225;
-}
-
-.composer form {
-  display: flex;
-  gap: 0.7rem;
-}
-
-.composer input[type="text"] {
-  flex: 1;
-  font-size: 15px;
-  background: #40444b;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  color: #dcddde;
-  outline: none;
-}
-
-.composer input[type="text"]:focus {
-  box-shadow: 0 0 0 2px #5865f2;
-}
-
-.composer input[type="text"]::placeholder {
-  color: #72767d;
-}
-
-.btn-send {
-  background: #5865f2;
-  color: #ffffff;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.btn-send:hover {
-  background: #4752c4;
-}
-
-@media (max-width: 640px) {
-  .chat-body {
-    flex-direction: column;
-  }
-
-  .chat-sidebar-new {
-    width: auto;
-    max-height: 120px;
-    border-right: none;
-    border-bottom: 1px solid #202225;
-  }
-}
-
-/* ===== Join Page — dark redesign (index.html) ===== */
-
-body:has(.join-shell) {
-  margin: 0;
-  background: #1e1f22;
-}
-
+/* ============ Join screen layout ============ */
 .join-shell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
-  padding: 2rem 1rem;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% -10%, rgba(88, 101, 242, 0.25), transparent),
-    #1e1f22;
-  color: #dcddde;
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
 .join-card {
-  width: 100%;
-  max-width: 400px;
-  background: #2f3136;
-  border: 1px solid #202225;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+  background: var(--card);
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  width: min(90vw, 520px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
 }
 
 .join-head {
-  padding: 1.4rem 1.6rem 1.1rem;
-  border-bottom: 1px solid #202225;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-.join-head h1 {
+.brand-dot {
   display: inline-block;
-  font-size: 1.35rem;
-  color: #ffffff;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 0.5rem;
   vertical-align: middle;
 }
 
-.join-head .brand-dot {
-  margin-right: 0.55rem;
+.join-head h1 {
+  margin: 0;
+  font-size: 2rem;
 }
 
 .join-tagline {
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: #72767d;
+  color: #94a3b8;
+  margin: 0.5rem 0 0;
 }
 
-.join-card form {
-  display: flex;
-  flex-direction: column;
-  padding: 1.4rem 1.6rem 1.6rem;
-  gap: 1.1rem;
+/* ============ Form fields ============ */
+.field {
+  margin-bottom: 1.25rem;
 }
 
-.field label {
+label {
   display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #72767d;
-  font-weight: 600;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-bottom: 0.35rem;
 }
 
-.field input[type="text"],
-.field select {
+input[type="text"],
+input[type="password"] {
   width: 100%;
-  font-size: 15px;
-  padding: 0.8rem 1rem;
-  background: #40444b;
-  border: none;
-  border-radius: 8px;
-  color: #dcddde;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  background: #0f172a;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+input:focus {
   outline: none;
+  border-color: var(--accent);
 }
 
-.field input[type="text"]:focus,
-.field select:focus {
-  box-shadow: 0 0 0 2px #5865f2;
+select {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  background: #0f172a;
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.field input::placeholder {
-  color: #72767d;
+/* ============ Button styling ============ */
+button {
+  cursor: pointer;
 }
 
 .btn-join {
-  margin-top: 0.4rem;
+  width: 100%;
   padding: 0.85rem;
-  background: #5865f2;
-  color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.6rem;
+  background: var(--accent);
+  color: #0f172a;
+  font-weight: 700;
   font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition: transform 0.1s ease;
 }
 
 .btn-join:hover {
-  background: #4752c4;
+  transform: translateY(-2px);
+  filter: brightness(1.1);
 }
 
 .btn-join:active {
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
+/* ============ Footer ============ */
 .join-foot {
-  font-size: 0.78rem;
-  color: #4f545c;
+  color: #64748b;
+  font-size: 0.85rem;
+  text-align: center;
 }
-
-

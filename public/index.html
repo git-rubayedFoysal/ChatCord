@@ -1,23 +1,27 @@
 <!DOCTYPE html>
+<!-- Lightweight join screen: pick a username and a programming-language room -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <!-- Responsive viewport for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatCord — Join a Room</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css"> <!-- Stylesheet for this page -->
+    <script src="socket.io/socket.io.js"></script> <!-- Socket.IO client script -->
 </head>
 
 <body>
     <div class="join-shell">
+        <!-- Central card holding the join controls -->
         <main class="join-card">
             <header class="join-head">
-                <span class="brand-dot"></span>
-                <h1>ChatCord</h1>
+                <span class="brand-dot"></span>           <!-- Decorative dot -->
+                <h1>ChatCord</h1>                       <!-- App title -->
                 <p class="join-tagline">Pick a name, pick a room — see you inside.</p>
             </header>
 
+            <!-- Form to collect identity before entering chat -->
             <form id="join-form" autocomplete="off">
                 <div class="field">
                     <label for="username">Username</label>
@@ -27,6 +31,7 @@
                 <div class="field">
                     <label for="room">Room</label>
                     <select name="room" id="room">
+                        <!-- Predefined rooms grouped by programming language -->
                         <option value="JavaScript">JavaScript</option>
                         <option value="Python">Python</option>
                         <option value="PHP">PHP</option>
